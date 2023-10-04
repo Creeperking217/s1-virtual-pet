@@ -27,8 +27,8 @@ import javax.swing.border.Border;
 
 public class VirtualPetFace extends JFrame implements ActionListener{
 
-    private final int WIDTH = 400;
-    private final int HEIGHT = 400;
+    public final int WIDTH = 400;
+    public final int HEIGHT = 400;
     private ImagePanel imagePanel;
     private JTextPane textArea;
     private String base;
@@ -39,7 +39,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     private Timer timer;
     
 
-    private static final String imageBase = "./pet_images/";
+    private static final String imageBase = "pet_images/";
     
     public static void main(String args[]) {
         VirtualPet newPet = new VirtualPet();   
@@ -61,7 +61,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     
     public void init() {
         String curDir = System.getProperty("user.dir");
-        
+        curDir += "/cam-v2";
         base = curDir + "/" + imageBase;
         pics = new ArrayList<Image>();
         timer = new Timer(400, this);
