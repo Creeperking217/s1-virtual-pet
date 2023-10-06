@@ -3,6 +3,10 @@
  * @author Cam
  * @author ?
  */
+
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 public class VirtualPet {
     
     public VirtualPetFace face;
@@ -13,8 +17,8 @@ public class VirtualPet {
     // constructor
     public VirtualPet() {
         face = new VirtualPetFace();
-        face.setImage("normal");
-        face.setMessage("Hello.");
+        face.setImage("blank");
+        face.setMessage("");
     }
     
     public void feed() {
@@ -36,8 +40,26 @@ public class VirtualPet {
     }
     
     public void sleep() {
+        
         hunger = hunger + 1;
         face.setImage("asleep");
     }
+
+    public void rest(int ms) {
+        try {
+        Thread.sleep(ms);
+        } catch (Exception e) {
+            
+        }
+    }
+    public void AVATalk(String msg) {
+        JOptionPane.showMessageDialog(
+                    new JFrame(),
+                    msg,
+                    "A.V.A.",
+                    JOptionPane.PLAIN_MESSAGE
+                    );
+    }
+    
 
 } // end Virtual Pet
