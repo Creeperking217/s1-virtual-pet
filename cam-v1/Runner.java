@@ -44,12 +44,19 @@ public class Runner {
                 );
         }
         else {
-            petName = "";
+            JOptionPane.showMessageDialog(
+                    new JFrame(),
+                    "bruh",
+                    "bruh",
+                    JOptionPane.WARNING_MESSAGE
+                    );
+                    petName = "";
         }
         //String petName = getResponse()
         
-        String[] s = {"make them exercise", "feed them", "put them to sleep...", "idk u ask me"};
+        String[] s = {"make them exercise", "feed them", "put them to sleep...", "idk u ask me", "bruh"};
         int choice = chooseOptions(petName + " is tired", s);
+        System.exit(1);
         
     }
 
