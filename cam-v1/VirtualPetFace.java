@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -52,6 +53,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     
     public static void main(String args[]) {
         VirtualPet newPet = new VirtualPet();   
+        
     }
     
     public VirtualPetFace() {
@@ -91,6 +93,8 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         Container contentPane = this.getContentPane();
         contentPane.setLayout(new GridBagLayout());
         contentPane.setBackground(Color.white);
+        JButton b=new JButton("Click Here");  
+        
        
         
         imagePanel = new ImagePanel();
