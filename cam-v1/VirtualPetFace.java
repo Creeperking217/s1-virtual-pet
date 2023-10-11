@@ -41,6 +41,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     private final int HEIGHT = 400;
     private ImagePanel imagePanel;
     private JTextPane textArea;
+    private ImagePanel side;
     private String base;
     private int loopslot = 0;
     private String[] files;
@@ -92,10 +93,8 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         setSize(new Dimension(WIDTH, HEIGHT));
         Container contentPane = this.getContentPane();
         contentPane.setLayout(new GridBagLayout());
-        contentPane.setBackground(Color.white);
-        JButton b=new JButton("Click Here");  
-        
-       
+        contentPane.setBackground(Color.white);  
+          
         
         imagePanel = new ImagePanel();
         int width = 200;
@@ -109,6 +108,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         c.gridy = 1;
         contentPane.add(imagePanel,c);
         
+        
         textArea = new JTextPane();
         textArea.setEditable(false);
         JScrollPane scroll = new JScrollPane(textArea);
@@ -117,6 +117,10 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         textArea.setPreferredSize(new Dimension(width, height/2));
         textArea.setSize(new Dimension(width, height/2));
 
+        
+
+        
+
 
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridwidth = 2;
@@ -124,6 +128,16 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         c.gridy = 2;
         c.ipady = 20;
         contentPane.add(scroll, c);
+
+        JButton b=new JButton(" ");  
+        b.setBounds(50,80,30,30);  
+        textArea.add(b);  
+        textArea.setSize(400,400);  
+        textArea.setLayout(null);  
+        textArea.setVisible(true); 
+
+
+        //b.setText("dfsakhdf");
     
         setLocationRelativeTo(null);
         setVisible(true);
@@ -174,6 +188,10 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         }
         //System.err.println(pics.size());
     }       
+
+    // public void clearText() {
+    //     textArea.
+    // }
         
         
     public void getImages(final String mood) {
@@ -190,6 +208,10 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         String current = textArea.getText();
         textArea.setText(current + "\n" + message);
         textArea.select(current.length(), (current.length() + message.length() + 1));
+    }
+
+    public void clearMessage() {
+        textArea.setText("");
     }
     
     

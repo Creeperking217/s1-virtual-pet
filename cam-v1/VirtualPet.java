@@ -17,7 +17,7 @@ public class VirtualPet {
     // constructor
     public VirtualPet() {
         face = new VirtualPetFace();
-        face.setImage("blank");
+        face.setImage("happy");
         face.setMessage("");
     }
     
