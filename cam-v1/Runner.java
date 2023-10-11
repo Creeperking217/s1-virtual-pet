@@ -4,8 +4,8 @@ import java.awt.Dimension;
 
 public class Runner {
     public static void main(String[] args) {
-        VirtualPet p = new VirtualPet();
-        p.rest(2000);
+        //VirtualPet p = new VirtualPet();
+        //p.rest(2000);
         
         JOptionPane.showMessageDialog(
                     new JFrame(),
@@ -13,19 +13,16 @@ public class Runner {
                     "???",
                     JOptionPane.PLAIN_MESSAGE
                     );
+        
+        //VirtualPet p1 = new VirtualPet();
+        //p.rest(2000);
         JOptionPane.showMessageDialog(
                     new JFrame(),
-                    "Welcome to PetRaiser!",
+                    "Here is your pet!",
                     "???",
                     JOptionPane.PLAIN_MESSAGE
                     );
-        JOptionPane.showMessageDialog(
-                    new JFrame(),
-                    "My name is A.V.A., or AI Virtual Assistant",
-                    "???",
-                    JOptionPane.PLAIN_MESSAGE
-                    );
-        p.AVATalk("Here is your pet");
+        VirtualPet p = new VirtualPet();
         p.face.setImage("normal");
         p.rest(1000);
         String[] options = {"Bob", "Kyle", "Other"};
@@ -38,8 +35,7 @@ public class Runner {
         else if (selection == 1) {
             petName = "Kyle";
         }
-        else if (selection == 2)
-        {
+        else if (selection == 2) {
             petName = (String)JOptionPane.showInputDialog(
                 new JFrame(),
                 "",
@@ -47,10 +43,13 @@ public class Runner {
                 JOptionPane.PLAIN_MESSAGE
                 );
         }
+        else {
+            petName = "";
+        }
         //String petName = getResponse()
         
-                    
-        JOptionPane.showMessageDialog(new JFrame(), "asjkfhksdjfaksdfjlashfskldjfaslfjdhfaf", "Terms and Conditions", JOptionPane.PLAIN_MESSAGE);
+        String[] s = {"make them exercise", "feed them", "put them to sleep...", "idk u ask me"};
+        int choice = chooseOptions(petName + " is tired", s);
         
     }
 
@@ -61,6 +60,11 @@ public class Runner {
                 question,
                 JOptionPane.PLAIN_MESSAGE
                 );
+    }
+
+    public static int chooseOptions(String q, String[] options) {
+        return JOptionPane.showOptionDialog(new JFrame(), q, "petraiser.exe", 
+                                                          0, 3, null, options, options[0]);
     }
 
     

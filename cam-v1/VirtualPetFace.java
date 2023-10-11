@@ -59,6 +59,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
             javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
                 public void run() {
                     createGUI();
+                    //createGUI();
                 }
             });
         } catch (Exception e) {
