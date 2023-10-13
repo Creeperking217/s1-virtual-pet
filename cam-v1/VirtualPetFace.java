@@ -28,19 +28,25 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.Timer;
 import javax.swing.border.Border;
+import javax.swing.plaf.ButtonUI;
+
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 
 public class VirtualPetFace extends JFrame implements ActionListener{
 
-    private final int WIDTH = 400;
-    private final int HEIGHT = 400;
+    private final int WIDTH = 800;
+    private final int HEIGHT = 800;
     private ImagePanel imagePanel;
     private JTextPane textArea;
+    private JTextPane textArea1;
     private ImagePanel side;
     private String base;
     private int loopslot = 0;
@@ -48,6 +54,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     private Image[] allPics;
     private ArrayList<Image> pics;
     private Timer timer;
+    private JButton[] choices = new JButton[7];
     
 
     private static final String imageBase = "pet_images/";
@@ -93,12 +100,12 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         setSize(new Dimension(WIDTH, HEIGHT));
         Container contentPane = this.getContentPane();
         contentPane.setLayout(new GridBagLayout());
-        contentPane.setBackground(Color.white);  
+        contentPane.setBackground(Color.white); 
           
         
         imagePanel = new ImagePanel();
-        int width = 200;
-        int height = 200;
+        int width = 400;
+        int height = 400;
         imagePanel.setPreferredSize(new Dimension(width, height));
         imagePanel.setMinimumSize(new Dimension(width, height));
         imagePanel.setBorder(BorderFactory.createLineBorder(Color.black, 2));
@@ -106,7 +113,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridx = 1;
         c.gridy = 1;
-        contentPane.add(imagePanel,c);
+        this.add(imagePanel,c);
         
         
         textArea = new JTextPane();
@@ -116,9 +123,6 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         scroll.setSize(new Dimension(width, height/2));
         textArea.setPreferredSize(new Dimension(width, height/2));
         textArea.setSize(new Dimension(width, height/2));
-
-        
-
         
 
 
@@ -129,12 +133,24 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         c.ipady = 20;
         contentPane.add(scroll, c);
 
-        JButton b=new JButton(" ");  
-        b.setBounds(50,80,30,30);  
-        textArea.add(b);  
-        textArea.setSize(400,400);  
+        for (int i = 0; i < choices.length; i+= 3) {
+            for (int j = 0; j < 3 && i + j < choices.length; j++) {
+                choices[j] = new JButton("Choose a name");  
+                if (choices.length - i * 3 >= 3)
+                choices[j].setBounds(2 * (200/3 * j + 8),2*(30 + 15 * i), 2 * (150/3),60);  
+                else if (choices.length % 3 == 2)
+                choices[j].setBounds(78 + j * 150,60 + 30 * i, 100,60);  
+                else
+                choices[j].setBounds(148,60 + 30 * i, 100,60);  
+                choices[j].setVisible(true); 
+                textArea.add(choices[j]);  
+            }
+        }
+
+        textArea.setSize(800,800);  
         textArea.setLayout(null);  
         textArea.setVisible(true); 
+        
 
 
         //b.setText("dfsakhdf");
