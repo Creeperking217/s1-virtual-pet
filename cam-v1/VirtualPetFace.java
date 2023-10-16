@@ -54,8 +54,10 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     private Image[] allPics;
     private ArrayList<Image> pics;
     private Timer timer;
-    private JButton[] choices = new JButton[7];
-    
+    private JButton[] choices = new JButton[2];
+    public int[] buttonStates = {0, 0, 0, 0, 0};
+    public boolean buttonPressed = false;
+    String[] words = {"A","B","C","D","E"};
 
     private static final String imageBase = "pet_images/";
     
@@ -119,10 +121,10 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         textArea = new JTextPane();
         textArea.setEditable(false);
         JScrollPane scroll = new JScrollPane(textArea);
-        scroll.setPreferredSize(new Dimension(width, height/2));
-        scroll.setSize(new Dimension(width, height/2));
-        textArea.setPreferredSize(new Dimension(width, height/2));
-        textArea.setSize(new Dimension(width, height/2));
+        scroll.setPreferredSize(new Dimension(width, 2*height/3));
+        scroll.setSize(new Dimension(width, 2*height/3));
+        textArea.setPreferredSize(new Dimension(width, 2*height/3));
+        textArea.setSize(new Dimension(width, 2*height/3));
         
 
 
@@ -133,21 +135,9 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         c.ipady = 20;
         contentPane.add(scroll, c);
 
-        for (int i = 0; i < choices.length; i+= 3) {
-            for (int j = 0; j < 3 && i + j < choices.length; j++) {
-                choices[j] = new JButton("Choose a name");  
-                if (choices.length - i * 3 >= 3)
-                choices[j].setBounds(2 * (200/3 * j + 8),2*(30 + 15 * i), 2 * (150/3),60);  
-                else if (choices.length % 3 == 2)
-                choices[j].setBounds(78 + j * 150,60 + 30 * i, 100,60);  
-                else
-                choices[j].setBounds(148,60 + 30 * i, 100,60);  
-                choices[j].setVisible(true); 
-                textArea.add(choices[j]);  
-            }
-        }
+        
 
-        textArea.setSize(800,800);  
+        textArea.setSize(800,1600);  
         textArea.setLayout(null);  
         textArea.setVisible(true); 
         
@@ -192,6 +182,28 @@ public class VirtualPetFace extends JFrame implements ActionListener{
                 timer.restart();
             }
         }
+
+    public void newButtons(int amt) {
+        
+        choices = new JButton[amt];
+        for (int i = 0; i < choices.length; i++) {
+            choices[i] = new JButton(words[i]);  
+            choices[i].setBounds(2 * (200/choices.length * i + 60/choices.length),200, 60,60);  
+            choices[i].setVisible(true); 
+            textArea.add(choices[i]);  
+            choices[i].addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e)
+                {
+                    for (int i = 0; i < choices.length; i++)
+                    if (e.getSource() == choices[i]) {
+                        System.out.println(words[i]);
+                    }
+                    buttonPressed = true;
+                }
+            });  
+        }
+    }
 
     public void getAllImages() {
         File dir = new File(base);   
