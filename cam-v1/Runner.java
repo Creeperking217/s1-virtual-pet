@@ -5,6 +5,7 @@ import java.awt.Dimension;
 public class Runner {
     public static String[] words = {"A","B","C","D","E"};
     public static void main(String[] args) {
+        
         VirtualPet p = new VirtualPet();
         
         //p.face.newButtonColumn(new String[] {"a", "b", "c"});

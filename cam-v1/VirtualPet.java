@@ -15,7 +15,9 @@ public class VirtualPet {
     public int hunger = 0; 
     public int tiredness = 0;
     public int health = 50;
+    String name = "Penguin";
     boolean fighting = false;
+    Item[] items = new Item[] {new Item(20, "Candy", 5)};
     Random rand = new Random();
       // how hungry the pet is.
     
@@ -30,6 +32,7 @@ public class VirtualPet {
         fighting = true;
         int choice = 0;
         while (fighting){
+            choice = 0;
             face.newButtonColumn(new String[] {"Fight", "Heal"});
             while (!face.buttonPressed) {
                 rest(1);
@@ -71,11 +74,58 @@ public class VirtualPet {
                 face.buttonPressed = false;
                 }
                 face.clearButtons();
-                face.setMessage(opponent.name + " used " + opponent.attacks[rand.nextInt(opponent.attacks.length)]);
+                if (choice == 0) {
+                    if (rand.nextInt(3) < 2)
+                    face.setMessage(name + " used " + "Spin-kick");
+                    else
+                    face.setMessage(name + " missed");
+                }
+                else if (choice == 1) {
+                    face.setMessage(name + " used " + "Tackle");
+                }
+                else {
+                    face.setMessage(name + " used " + "Bully");
+                }
+                rest(500);
+                face.clearMessage();
+                
             }
             else {
+                int chose = 1;
+                String[] itemNames = new String[items.length];
+                for (int i = 0; i < items.length; i++) {
+                    if (items[i].invAmt != 0)
+                    itemNames[i] = items[i].name + " x " + items[i].invAmt;
+                }
+                face.newButtonColumn(itemNames);
 
+                while (chose != 0)
+                {
+                while (!face.buttonPressed) {
+                rest(1);
+                }
+                for (int i = 0; i < face.buttonStates.length; i++) {
+                    if (face.buttonStates[i] == 1) {
+                        face.clearMessage();
+                        choice = i;
+                    }
+                }
+                chose = JOptionPane.showConfirmDialog(new JFrame(),
+                    "Will heal " + items[choice].healAmt + "hp", "Use " + items[choice].name + "?",
+                    JOptionPane.YES_NO_OPTION);
+                    face.buttonPressed = false;
+                
+                }
+                face.buttonPressed = false;
+                face.clearButtons();
+                face.setMessage(name + " healed " + items[choice].healAmt + "hp");
+                items[choice].invAmt --;
+                rest(500);
+                face.clearMessage();
             }
+            face.setMessage(opponent.name + " used " + opponent.attacks[rand.nextInt(opponent.attacks.length)]);
+            rest(500);
+            face.clearMessage();
         }
         
         return 0;

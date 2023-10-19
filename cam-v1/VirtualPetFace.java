@@ -190,6 +190,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     }
 
     public void newButtonColumn(String[] names) {
+        buttonStates = new int[names.length];
         buttonPressed = false;
         if (choices.length > 0)
         clearButtons();
@@ -205,7 +206,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
                 {
                     for (int i = 0; i < choices.length; i++)
                     if (e.getSource() == choices[i]) {
-                        System.out.println(i);
+                        //System.out.println(buttonStates);
                         buttonStates[i] = 1;
                     }
                     buttonPressed = true;
@@ -215,6 +216,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     }
 
     public void newButtons(int amt) {
+        buttonStates = new int[amt];
         buttonPressed = false;
         if (choices.length > 0)
         clearButtons();
@@ -230,7 +232,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
                 {
                     for (int i = 0; i < choices.length; i++)
                     if (e.getSource() == choices[i]) {
-                        System.out.println(i);
+                        //System.out.println(i);
                         buttonStates[i] = 1;
                     }
                     buttonPressed = true;
