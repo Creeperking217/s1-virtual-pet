@@ -7,6 +7,8 @@ public class Runner {
     public static void main(String[] args) {
         VirtualPet p = new VirtualPet();
         
+        //p.face.newButtonColumn(new String[] {"a", "b", "c"});
+        p.fight(new Opponent("slime", 50, new String[] {"slime", "tackle", "bounce"}, null));
         p.face.clearMessage();
         p.exercise();
         p.rest(1000);
@@ -16,16 +18,21 @@ public class Runner {
         p.rest(1000);
         p.exercise();
         p.face.clearMessage();
-        int c = askQuestion("what do you choose", new String[] {"jfdklajflkadkj;fa", "me", "ok"}, p);
-        System.out.println(c);
-        p.exercise();
-        p.rest(1000);
-        p.exercise();
-        p.exercise();
+        
+        // int c = askQuestion("what do you choose", new String[] {"jfdklajflkadkj;fa", "me", "ok"}, p);
+        // System.out.println(c);
+        // p.face.clearButtons();
+        // p.exercise();
+        // p.rest(1000);
+        // p.exercise();
+        // p.exercise();
+        
+        //int outcome = p.fight();
     }
 
     public static int askQuestion(String q, String[] choices, VirtualPet p) {
         p.face.newButtons(3);
+        p.face.buttonStates = new int[choices.length];
         for (int i = 0; i < choices.length; i++) {
             p.face.setMessage(words[i] + ". " + choices[i]);
         }

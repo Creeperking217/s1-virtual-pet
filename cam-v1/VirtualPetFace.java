@@ -54,7 +54,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     private Image[] allPics;
     private ArrayList<Image> pics;
     private Timer timer;
-    private JButton[] choices = new JButton[2];
+    private JButton[] choices = new JButton[0];
     public int[] buttonStates = {0, 0, 0, 0, 0};
     public boolean buttonPressed = false;
     String[] words = {"A","B","C","D","E"};
@@ -183,8 +183,41 @@ public class VirtualPetFace extends JFrame implements ActionListener{
             }
         }
 
+    public void clearButtons() {
+        for (int i = 0; i < choices.length; i++) {
+            textArea.remove(choices[i]);
+        }
+    }
+
+    public void newButtonColumn(String[] names) {
+        buttonPressed = false;
+        if (choices.length > 0)
+        clearButtons();
+        choices = new JButton[names.length];
+        for (int i = 0; i < names.length; i++) {
+            choices[i] = new JButton(names[i]);  
+            choices[i].setBounds(100,80 + 67*i, 200,60);  
+            choices[i].setVisible(true); 
+            textArea.add(choices[i]);  
+            choices[i].addActionListener(new ActionListener() {
+
+                public void actionPerformed(ActionEvent e)
+                {
+                    for (int i = 0; i < choices.length; i++)
+                    if (e.getSource() == choices[i]) {
+                        System.out.println(i);
+                        buttonStates[i] = 1;
+                    }
+                    buttonPressed = true;
+                }
+            });  
+        }
+    }
+
     public void newButtons(int amt) {
-        
+        buttonPressed = false;
+        if (choices.length > 0)
+        clearButtons();
         choices = new JButton[amt];
         for (int i = 0; i < choices.length; i++) {
             choices[i] = new JButton(words[i]);  
@@ -197,7 +230,8 @@ public class VirtualPetFace extends JFrame implements ActionListener{
                 {
                     for (int i = 0; i < choices.length; i++)
                     if (e.getSource() == choices[i]) {
-                        System.out.println(words[i]);
+                        System.out.println(i);
+                        buttonStates[i] = 1;
                     }
                     buttonPressed = true;
                 }
@@ -234,8 +268,15 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     
     public void setMessage(String message) {
         String current = textArea.getText();
-        textArea.setText(current + "\n" + message);
+        for (int i = 0; i <= message.length(); i++) {
+        textArea.setText(current + "\n" + message.substring(0, i));
         textArea.select(current.length(), (current.length() + message.length() + 1));
+        try {
+            Thread.sleep(50);
+            } catch (Exception e) {
+                
+            }
+        }
     }
 
     public void clearMessage() {
