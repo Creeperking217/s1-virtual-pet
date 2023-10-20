@@ -69,34 +69,81 @@ public class Runner {
         // message("You go right around the fork", 1500, p);
         // else
         // message("You go left around the fork", 1500, p);
-        message("walking down the road, you notice someone approaching you", 1000, p);
-        message("???: Hello little peng-", 0, p);
-        speakerMessage("Oh? " + "Your name is " + p.name + "?", "???", 1000, p);
-        speakerMessage("And you're lost?", "???", 1000, p);
-        speakerMessage("Well I am Socrates, one of the great philosophers of Greece", "???", 1000, p);
-        speakerMessage("I may be able to asist you with some of my wisdom", "Socrates", 1000, p);
-        int c2 = askQuestion("", new String[] {"Listen to Socrates' wisdom", "ignore"}, p);
-        p.face.clearButtons();
-        if (c2 == 0) {
-            speakerMessage("Courage is the first of human qualities because it is the quality that which guarantees the others", "Socrates", 1500, p);
-            int c3 = askQuestion("", new String[] {"I didn't know that", "Ok but who asked", "you're copying Aristotle"}, p);
+        // message("walking down the road, you notice someone approaching you", 1000, p);
+        // message("???: Hello little peng-", 0, p);
+        // speakerMessage("Oh? " + "Your name is " + p.name + "?", "???", 1000, p);
+        // speakerMessage("And you're lost?", "???", 1000, p);
+        // speakerMessage("Well I am Socrates, one of the great philosophers of Greece", "???", 1000, p);
+        // speakerMessage("I may be able to asist you with some of my wisdom", "Socrates", 1000, p);
+        // int c2 = askQuestion("", new String[] {"Listen to Socrates' wisdom", "ignore"}, p);
+        // p.face.clearButtons();
+        // if (c2 == 0) {
+        //     speakerMessage("Courage is the first of human qualities because it is the quality that which guarantees the others", "Socrates", 1500, p);
+        //     int c3 = askQuestion("", new String[] {"I didn't know that", "Ok but who asked", "you're copying Aristotle"}, p);
+        //     p.face.clearButtons();
+        //     if (c3 == 0) {
+        //         message("You gained +10 intelligence", 1500, p);
+        //         speakerMessage("I also must warn you", "Socrates", 500, p);
+        //         speakerMessage("A dangerous creature lives nearby", "Socrates", 1000, p);
+        //         speakerMessage("I would be careful if I were you...", "Socrates", 1500, p);
+        //     }
+        //     else if (c3 == 1) {
+        //         speakerMessage("Be careful, " + p.name + ", sometimes words can hurt more than any weapon ever could", "Socrates", 1000, p);
+        //         message("Socrates will remember this...", 1000, p);
+        //     }
+        //     else {
+        //     speakerMessage("I see, so that is the way it has to be", "Socrates", 1000, p);
+        //     message("Socrates will remember this...", 1000, p);
+        //     }
+        //     message("Socrates walks away", 1000, p);
+        // }
+        // else
+        // message("you ignore Socrates and walk away", 1000, p);
+        boolean ch1complete = false;
+        while(!ch1complete){
+
+        // message("Continuing along the path, you see something in the distance", 1000, p);
+        // message("It's a piece of candy", 1000, p);
+        // message("It looks very good...", 1000, p);
+        boolean ansd = false;
+        while (!ansd) {
+            int c4 = askQuestion("Take the piece of candy?", new String[] {"yes", "no"}, p);
             p.face.clearButtons();
-            if (c3 == 0) {
-                message("You gained +10 intelligence", 1500, p);
-                speakerMessage("I also must warn you", "Socrates", 500, p);
-                speakerMessage("A dangerous creature lives nearby", "Socrates", 1000, p);
-                speakerMessage("I would be careful if I were you...", "Socrates", 1500, p);
+            if (c4 == 0) {
+                ansd = true;
+                message("You reach down to grab the cand-", 0, p);
+                p.face.cameraShake(50, 50);
+                message("ROAOHSDKAJHFHK", 1000, p);
+                message("A slime jumps out of the bushes in front of you!", 500, p);
+
+
             }
-            else if (c3 == 1) {
-                speakerMessage("Be careful, " + p.name + ", sometimes words can hurt more than any weapon ever could", "Socrates", 1000, p);
+            else {
+                int r = JOptionPane.showConfirmDialog(new JFrame(), "You'll be very sad if you don't take the candy", "Are you sure?", 0, 2, null);
+                if (r == 0)
+                {
+                    ansd = true;
+                    p.face.setImage("sad");
+                    p.mood = "sad";
+                    p.face.timer.restart();
+                    message("You don't get any candy and are sad ;(", 1000, p);
+                    message("You continue walking down the path", 1000, p);
+                    message("You hear a rustling noi-", 0, p);
+                    p.face.cameraShake(50, 50);
+                    message("ROAOHSDKAJHFHK", 1000, p);
+                    message("A slime jumps out of the bushes in front of you!", 500, p);
+                }
             }
-            else
-            speakerMessage("I see, so that is the way it has to be", "Socrates", 1000, p);
-            message("Socrates will remember this...", 1000, p);
-            message("Socrates walks away", 1000, p);
         }
-        else
-        message("you ignore Socrates and walk away", 1000, p);
+        int win = p.fight(new Opponent("Lesser Slime", 60, new String[] {"Tackle", "Bounce", "Slime"}, new int[] {100, 500, 100}, "slime"));
+        if (win == 0) {
+            p.face.setImage("dead");
+        }
+
+        }
+
+
+        
 
 
         

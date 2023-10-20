@@ -3,12 +3,12 @@ public class Opponent {
     public int health;
     public String[] attacks;
     public int[] attackDamages;
-    public String enteranceLine;
-    public Opponent(String n, int h, String[] a, int[] dmg, String e) {
+    public String spriteName ;
+    public Opponent(String n, int h, String[] a, int[] dmg, String s) {
         name = n;
         health = h;
         attacks = a;
         attackDamages = dmg;
-        enteranceLine = e;
+        spriteName = s;
     }
 }

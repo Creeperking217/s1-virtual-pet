@@ -53,10 +53,11 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     private String[] files;
     private Image[] allPics;
     private ArrayList<Image> pics;
-    private Timer timer;
+    public Timer timer;
     private JButton[] choices = new JButton[0];
     public int[] buttonStates = {0, 0, 0, 0, 0};
     public boolean buttonPressed = false;
+    public int delay = 400;
     String[] words = {"A","B","C","D","E"};
 
     private static final String imageBase = "pet_images/";
@@ -86,7 +87,8 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         curDir += "/cam-v1";
         base = curDir + "/" + imageBase;
         pics = new ArrayList<Image>();
-        timer = new Timer(400, this);
+        timer = new Timer(delay, this);
+        
         //timer.setInitialDelay(1000);
 
         getAllImages();
