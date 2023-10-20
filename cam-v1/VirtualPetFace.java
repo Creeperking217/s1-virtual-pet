@@ -187,6 +187,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         for (int i = 0; i < choices.length; i++) {
             textArea.remove(choices[i]);
         }
+        repaint();
     }
 
     public void newButtonColumn(String[] names) {
@@ -213,6 +214,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
                 }
             });  
         }
+        repaint();
     }
 
     public void newButtons(int amt) {
@@ -239,6 +241,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
                 }
             });  
         }
+        repaint();
     }
 
     public void getAllImages() {
@@ -272,7 +275,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         String current = textArea.getText();
         for (int i = 0; i <= message.length(); i++) {
         textArea.setText(current + "\n" + message.substring(0, i));
-        textArea.select(current.length(), (current.length() + message.length() + 1));
+        //textArea.select(current.length(), (current.length() + message.length() + 1));
         try {
             Thread.sleep(50);
             } catch (Exception e) {
@@ -298,7 +301,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
     public void setInstantMessage(String message) {
         String current = textArea.getText();
         textArea.setText(current + "\n" + message);
-        textArea.select(current.length(), (current.length() + message.length() + 1));
+        //textArea.select(current.length(), (current.length() + message.length() + 1));
     }
 
     public void clearMessage() {

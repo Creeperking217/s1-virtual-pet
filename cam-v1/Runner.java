@@ -7,21 +7,52 @@ public class Runner {
     public static void main(String[] args) {
         
         VirtualPet p = new VirtualPet();
-        
-        //p.face.newButtonColumn(new String[] {"a", "b", "c"});
-        //p.face.cameraShake(10000);
-        p.fight(new Opponent("slime", 50, new String[] {"slime", "tackle", "bounce"}, new int[] {10, 25, 20}));
+        int c = askQuestion("Do you want to play [GAME NAME]?", new String[] {"yes", "no"}, p);
+        if (c == 1) {
+            p.face.setMessage("bruh");
+            System.exit(0);
+        }
+        p.face.clearButtons();
         p.face.clearMessage();
-        p.exercise();
-        p.rest(1000);
-        p.exercise();
-        p.rest(1000);
-        p.exercise();
-        p.rest(1000);
-        p.exercise();
+        p.face.setMessage("Nice");
+        p.rest(500);
         p.face.clearMessage();
+        p.face.setMessage("Please tell me what your name is");
+        p.rest(100);
+        p.name = getResponse("What is your name?", "Tell me");
+        if (p.name == null) {
+            p.name = getResponse("Bruh tell me", "Tell me rn");
+            if (p.name == null) {
+                p.name = getResponse("Pleassse?", "plssssssss");
+                if (p.name == null) {
+                    p.name = getResponse("Last chance", "Really man...");
+                    if (p.name == null) {
+                        p.face.clearMessage();
+                        p.face.setMessage("fine them >:(");
+                        System.exit(0);
+                    }
+                }
+            }
+        }
+        p.face.clearMessage();
+        p.face.setMessage("Hello, " + p.name + "!");
+        p.rest(500);
+        p.face.clearMessage();
+        p.face.setMessage("Welcome to [GAME NAME]!");
+        p.rest(500);
+        p.face.clearMessage();
+        p.face.setMessage("Your experience starts...");
+        p.rest(750);
+        p.face.clearMessage();
+        p.face.setMessage("...");
+        p.rest(600);
+        p.face.clearMessage();
+        p.face.setMessage("NOW");
+        p.face.cameraShake(40, 50);
+        p.face.setImage("idle");
+        p.face.cameraShake(20, 50);
         
-        // int c = askQuestion("what do you choose", new String[] {"jfdklajflkadkj;fa", "me", "ok"}, p);
+        
         // System.out.println(c);
         // p.face.clearButtons();
         // p.exercise();
@@ -33,8 +64,9 @@ public class Runner {
     }
 
     public static int askQuestion(String q, String[] choices, VirtualPet p) {
-        p.face.newButtons(3);
+        p.face.newButtons(choices.length);
         p.face.buttonStates = new int[choices.length];
+        p.face.setMessage(q);
         for (int i = 0; i < choices.length; i++) {
             p.face.setMessage(words[i] + ". " + choices[i]);
         }
@@ -51,7 +83,7 @@ public class Runner {
         return 0;
     }
 
-    public String getResponse(String title, String question) {
+    public static String getResponse(String title, String question) {
         return (String)JOptionPane.showInputDialog(
                 new JFrame(),
                 title,

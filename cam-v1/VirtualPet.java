@@ -26,7 +26,7 @@ public class VirtualPet {
     // constructor
     public VirtualPet() {
         face = new VirtualPetFace();
-        face.setImage("happy");
+        face.setImage("airistotle");
         face.setMessage("");
     }
 
@@ -159,6 +159,7 @@ public class VirtualPet {
                 face.buttonPressed = false;
                 face.clearButtons();
                 face.setMessage(name + " healed " + items[choice].healAmt + "hp");
+                damagePlayer(-items[choice].healAmt);
                 items[choice].invAmt --;
                 rest(500);
                 face.clearMessage();
