@@ -9,7 +9,8 @@ public class Runner {
         VirtualPet p = new VirtualPet();
         
         //p.face.newButtonColumn(new String[] {"a", "b", "c"});
-        p.fight(new Opponent("slime", 50, new String[] {"slime", "tackle", "bounce"}, null));
+        //p.face.cameraShake(10000);
+        p.fight(new Opponent("slime", 50, new String[] {"slime", "tackle", "bounce"}, new int[] {10, 25, 20}));
         p.face.clearMessage();
         p.exercise();
         p.rest(1000);

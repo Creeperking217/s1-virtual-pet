@@ -21,7 +21,7 @@ import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.util.ArrayList;
-
+import java.util.Random;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -279,6 +279,26 @@ public class VirtualPetFace extends JFrame implements ActionListener{
                 
             }
         }
+    }
+
+    public void cameraShake(int len, int str) {
+        Random rnd = new Random();
+        int[] prevpos = {getLocation().x, getLocation().y};
+        for (int i = 0; i <len; i++) {
+            setLocation(getLocation().x + rnd.nextInt(str)*(Integer.signum(25 - rnd.nextInt(50))), getLocation().y + rnd.nextInt(50)*(Integer.signum(25 - rnd.nextInt(50))));
+             try {
+            Thread.sleep(25);
+            } catch (Exception e) {
+                
+            }
+            setLocation(prevpos[0], prevpos[1]);
+        }
+    }
+
+    public void setInstantMessage(String message) {
+        String current = textArea.getText();
+        textArea.setText(current + "\n" + message);
+        textArea.select(current.length(), (current.length() + message.length() + 1));
     }
 
     public void clearMessage() {

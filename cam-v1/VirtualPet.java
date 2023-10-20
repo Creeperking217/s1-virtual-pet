@@ -15,6 +15,8 @@ public class VirtualPet {
     public int hunger = 0; 
     public int tiredness = 0;
     public int health = 50;
+    public int maxHealth = 50;
+    int health1;
     String name = "Penguin";
     boolean fighting = false;
     Item[] items = new Item[] {new Item(20, "Candy", 5)};
@@ -29,8 +31,11 @@ public class VirtualPet {
     }
 
     public int fight(Opponent opponent) {
+        face.clearButtons();
         fighting = true;
+        health1 = opponent.health;
         int choice = 0;
+        face.setInstantMessage("HP: " + health + " / " + maxHealth);
         while (fighting){
             choice = 0;
             face.newButtonColumn(new String[] {"Fight", "Heal"});
@@ -39,11 +44,13 @@ public class VirtualPet {
             }
             for (int i = 0; i < face.buttonStates.length; i++) {
                 if (face.buttonStates[i] == 1) {
-                    face.clearMessage();
+                    //face.clearMessage();
                     choice = i;
                 }
             }
+            face.clearButtons();
             if (choice == 0) {
+                //face.clearButtons();
                 face.newButtonColumn(new String[] {"Spin-kick", "Tackle", "Bully"});
                 int chose = 1;
                 while (chose != 0) {
@@ -52,7 +59,7 @@ public class VirtualPet {
                 }
                 for (int i = 0; i < face.buttonStates.length; i++) {
                     if (face.buttonStates[i] == 1) {
-                        face.clearMessage();
+                        //face.clearMessage();
                         choice = i;
                     }
                 }
@@ -73,18 +80,50 @@ public class VirtualPet {
                 }
                 face.buttonPressed = false;
                 }
+                face.clearMessage();
                 face.clearButtons();
                 if (choice == 0) {
-                    if (rand.nextInt(3) < 2)
+                    if (rand.nextInt(3) < 2) {
                     face.setMessage(name + " used " + "Spin-kick");
+                        rest(100);
+                        face.cameraShake(30, 50);
+                        damageOpponent(50, opponent);
+                        rest(100);
+                        if (opponent.health == 0) {
+                            face.clearMessage();
+                            face.setMessage(opponent.name + " has been defeated");
+                            rest(100);
+                            return 1;
+                        }
+                    }
                     else
                     face.setMessage(name + " missed");
                 }
                 else if (choice == 1) {
                     face.setMessage(name + " used " + "Tackle");
+                        rest(100);
+                        face.cameraShake(20, 20);
+                        damageOpponent(20, opponent);
+                        rest(100);
+                        if (opponent.health == 0) {
+                            face.clearMessage();
+                            face.setMessage(opponent.name + " has been defeated");
+                            rest(100);
+                            return 1;
+                        }
                 }
                 else {
                     face.setMessage(name + " used " + "Bully");
+                        rest(100);
+                        face.cameraShake(15, 10);
+                        damageOpponent(10, opponent);
+                        rest(100);
+                        if (health1 == 0) {
+                            face.clearMessage();
+                            face.setMessage(opponent.name + " has been defeated");
+                            rest(100);
+                            return 1;
+                        }
                 }
                 rest(500);
                 face.clearMessage();
@@ -97,6 +136,7 @@ public class VirtualPet {
                     if (items[i].invAmt != 0)
                     itemNames[i] = items[i].name + " x " + items[i].invAmt;
                 }
+                
                 face.newButtonColumn(itemNames);
 
                 while (chose != 0)
@@ -123,12 +163,47 @@ public class VirtualPet {
                 rest(500);
                 face.clearMessage();
             }
-            face.setMessage(opponent.name + " used " + opponent.attacks[rand.nextInt(opponent.attacks.length)]);
+            int atk = rand.nextInt(opponent.attacks.length);
+            face.setMessage(opponent.name + " used " + opponent.attacks[atk]);
+            damagePlayer(opponent.attackDamages[atk]);
+            rest(500);
+            if (health == 0) {
+                face.clearMessage();
+                face.setMessage(name + " has been defeated :(");
+                rest(100);
+                return 0;
+            }
+            
+            face.clearMessage();
+            System.out.println(health1*100.0/opponent.health);
+            if (health1*100.0/opponent.health <= 60 && health1*100.0/opponent.health >= 30) {
+            face.setMessage(opponent.name + " is looking a bit tired");
             rest(500);
             face.clearMessage();
+            }
+            else if (health1*100.0/opponent.health <= 30) {
+            face.setMessage(opponent.name + " is weak");
+            rest(500);
+            face.clearMessage();
+            }
+            face.setInstantMessage("HP: " + health + " / " + maxHealth);
         }
         
         return 0;
+    }
+
+    public void damageOpponent(int dmg, Opponent opponent) {
+        health1 -= dmg;
+        if (health1 < 0)
+        health1 = 0;
+    }
+
+    public void damagePlayer(int dmg) {
+        health -= dmg;
+        if (health > maxHealth)
+        health = maxHealth;
+        if (health < 0)
+        health = 0;
     }
     
     public void feed() {
