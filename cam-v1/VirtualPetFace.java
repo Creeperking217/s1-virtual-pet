@@ -284,6 +284,19 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         }
     }
 
+    public void setSpeakerMessage(String message, String speaker) {
+        String current = textArea.getText();
+        for (int i = 0; i <= message.length(); i++) {
+        textArea.setText(current + "\n" + speaker + ": " + message.substring(0, i));
+        //textArea.select(current.length(), (current.length() + message.length() + 1));
+        try {
+            Thread.sleep(50);
+            } catch (Exception e) {
+                
+            }
+        }
+    }
+
     public void cameraShake(int len, int str) {
         Random rnd = new Random();
         int[] prevpos = {getLocation().x, getLocation().y};

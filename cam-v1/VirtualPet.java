@@ -11,6 +11,8 @@ import javax.swing.JOptionPane;
 
 public class VirtualPet {
     
+    public int ignoredAristotle;
+    public int bulliedAristotle;
     public VirtualPetFace face;
     public int hunger = 0; 
     public int tiredness = 0;
