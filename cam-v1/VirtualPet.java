@@ -14,12 +14,16 @@ public class VirtualPet {
     
     public int bulliedAristotle = 0;
     public int bulliedSocrates = 0;
+    public int helpedSocrates = 1;
+    public int helpedAristotle = 0;
+    public int ignoredSocrates = 0;
     public VirtualPetFace face;
     public int hunger = 0; 
     public int tiredness = 0;
     public int health = 50;
     public int maxHealth = 50;
     public int strength = 0;
+    public boolean tookVaccine = false;
     
     int health1;
     public String name = "Penguin";
