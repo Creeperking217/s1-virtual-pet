@@ -279,7 +279,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         textArea.setText(current + "\n" + message.substring(0, i));
         //textArea.select(current.length(), (current.length() + message.length() + 1));
         try {
-            Thread.sleep(50);
+            Thread.sleep(35);
             } catch (Exception e) {
                 
             }
@@ -292,7 +292,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
         textArea.setText(current + "\n" + speaker + ": " + message.substring(0, i));
         //textArea.select(current.length(), (current.length() + message.length() + 1));
         try {
-            Thread.sleep(50);
+            Thread.sleep(35);
             } catch (Exception e) {
                 
             }

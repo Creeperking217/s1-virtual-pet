@@ -23,7 +23,7 @@ public class VirtualPet {
     int health1;
     public String name = "Penguin";
     boolean fighting = false;
-    Item[] items = new Item[] {};
+    Item[] items = new Item[] {new Item(30, "Candy", 0)};
     public String mood = "idle"; 
     Random rand = new Random();
       // how hungry the pet is.
@@ -101,7 +101,7 @@ public class VirtualPet {
                         face.setImage("spinkick");
                         //face.timer.restart();
                         face.setMessage(name + " used " + "Spin-kick");
-                        rest(100);
+                        rest(0);
                         face.cameraShake(30, 10);
                         face.setImage("slime");
                         //face.timer.restart();
