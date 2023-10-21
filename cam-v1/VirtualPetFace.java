@@ -166,6 +166,7 @@ public class VirtualPetFace extends JFrame implements ActionListener{
 
     public void setImage(String mood) {
         timer.stop();
+        timer.restart();
         pics.clear();
         getImages(mood);
         timer.start(); 

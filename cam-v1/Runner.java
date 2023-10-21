@@ -7,183 +7,186 @@ public class Runner {
     public static void main(String[] args) {
         
         VirtualPet p = new VirtualPet();
-        int c = askQuestion("Do you want to play [GAME NAME]?", new String[] {"yes", "no"}, p);
-        if (c == 1) {
-            p.face.setMessage("bruh");
-            System.exit(0);
-        }
-        p.face.clearButtons();
-        p.face.clearMessage();
-        p.face.setMessage("Nice");
-        p.rest(500);
-        p.face.clearMessage();
-        p.face.setMessage("Please tell me what your name is");
-        p.rest(100);
-        p.name = getResponse("What is your name?", "Tell me");
-        if (p.name == null) {
-            p.name = getResponse("Bruh tell me", "Tell me rn");
-            if (p.name == null) {
-                p.name = getResponse("Pleassse?", "plssssssss");
-                if (p.name == null) {
-                    p.name = getResponse("Last chance", "Really man...");
-                    if (p.name == null) {
-                        p.face.clearMessage();
-                        p.face.setMessage("fine them >:(");
-                        System.exit(0);
-                    }
-                }
-            }
-        }
-        p.face.clearMessage();
-        p.face.setMessage("Hello, " + p.name + "!");
-        p.rest(500);
-        p.face.clearMessage();
-        p.face.setMessage("Welcome to [GAME NAME]!");
-        p.rest(500);
-        p.face.clearMessage();
-        p.face.setMessage("Your experience starts...");
-        p.rest(750);
-        p.face.clearMessage();
-        p.face.setMessage("...");
-        p.rest(600);
-        p.face.clearMessage();
-        p.face.setMessage("NOW");
-        p.face.cameraShake(40, 50);
-        p.face.clearMessage();
-        p.face.setImage("sleepy");
-        p.face.cameraShake(20, 50);
-        p.rest(2000);
-        p.face.setImage("idle");
-        p.rest(1000);
-        message("...", 500, p);
-        message("It appear you have woken up as a penguin", 1000, p);
-        message("You are surrounded by a large forest", 1000, p);
-        message("A path stretches forwards in front of you", 1000, p);
-        askQuestion("", new String[] {"Follow the path"}, p);
-        p.face.clearButtons();
-        message("You follow the path", 1000, p);
-        message("...", 1000, p);
-        int c1 = askQuestion("There appears to be a fork in the road   ", new String[] {"Go right", "Go left"}, p);
-        p.face.clearButtons();
-        if (c1 == 0) 
-        message("You go right around the fork", 1500, p);
-        else
-        message("You go left around the fork", 1500, p);
-        message("walking down the road, you notice someone approaching you", 1000, p);
-        message("???: Hello little peng-", 0, p);
-        speakerMessage("Oh? " + "Your name is " + p.name + "?", "???", 1000, p);
-        speakerMessage("And you're lost?", "???", 1000, p);
-        speakerMessage("Well I am Socrates, one of the great philosophers of Greece", "???", 1000, p);
-        speakerMessage("I may be able to asist you with some of my wisdom", "Socrates", 1000, p);
-        int c2 = askQuestion("", new String[] {"Listen to Socrates' wisdom", "ignore"}, p);
-        p.face.clearButtons();
-        if (c2 == 0) {
-            speakerMessage("Courage is the first of human qualities because it is the quality that which guarantees the others", "Socrates", 1500, p);
-            int c3 = askQuestion("", new String[] {"I didn't know that", "Ok but who asked", "you're copying Aristotle"}, p);
-            p.face.clearButtons();
-            if (c3 == 0) {
-                message("You gained +10 intelligence", 1500, p);
-                speakerMessage("I also must warn you", "Socrates", 500, p);
-                speakerMessage("A dangerous creature lives nearby", "Socrates", 1000, p);
-                speakerMessage("I would be careful if I were you...", "Socrates", 1500, p);
-            }
-            else if (c3 == 1) {
-                speakerMessage("Be careful, " + p.name + ", sometimes words can hurt more than any weapon ever could", "Socrates", 1000, p);
-                message("Socrates will remember this...", 1000, p);
-            }
-            else {
-            speakerMessage("I see, so that is the way it has to be", "Socrates", 1000, p);
-            message("Socrates will remember this...", 1000, p);
-            }
-            message("Socrates walks away", 1000, p);
-        }
-        else
-        message("you ignore Socrates and walk away", 1000, p);
-        boolean ch1complete = false;
-        while(!ch1complete){
+        // int c = askQuestion("Do you want to play [GAME NAME]?", new String[] {"yes", "no"}, p);
+        // if (c == 1) {
+        //     p.face.setMessage("bruh");
+        //     System.exit(0);
+        // }
+        // p.face.clearButtons();
+        // p.face.clearMessage();
+        // p.face.setMessage("Nice");
+        // p.rest(500);
+        // p.face.clearMessage();
+        // p.face.setMessage("Please tell me what your name is");
+        // p.rest(100);
+        // p.name = getResponse("What is your name?", "Tell me");
+        // if (p.name == null) {
+        //     p.name = getResponse("Bruh tell me", "Tell me rn");
+        //     if (p.name == null) {
+        //         p.name = getResponse("Pleassse?", "plssssssss");
+        //         if (p.name == null) {
+        //             p.name = getResponse("Last chance", "Really man...");
+        //             if (p.name == null) {
+        //                 p.face.clearMessage();
+        //                 p.face.setMessage("fine them >:(");
+        //                 System.exit(0);
+        //             }
+        //         }
+        //     }
+        // }
+        // p.face.clearMessage();
+        // p.face.setMessage("Hello, " + p.name + "!");
+        // p.rest(500);
+        // p.face.clearMessage();
+        // p.face.setMessage("Welcome to [GAME NAME]!");
+        // p.rest(500);
+        // p.face.clearMessage();
+        // p.face.setMessage("Your experience starts...");
+        // p.rest(750);
+        // p.face.clearMessage();
+        // p.face.setMessage("...");
+        // p.rest(600);
+        // p.face.clearMessage();
+        // p.face.setMessage("NOW");
+        // p.face.cameraShake(40, 50);
+        // p.face.clearMessage();
+        // p.face.setImage("sleepy");
+        // p.face.cameraShake(20, 50);
+        // p.rest(2000);
+        // p.face.setImage("idle");
+        // p.rest(1000);
+        // message("...", 500, p);
+        // message("It appear you have woken up as a penguin", 1000, p);
+        // message("You are surrounded by a large forest", 1000, p);
+        // message("A path stretches forwards in front of you", 1000, p);
+        // askQuestion("", new String[] {"Follow the path"}, p);
+        // p.face.clearButtons();
+        // message("You follow the path", 1000, p);
+        // message("...", 1000, p);
+        // int c1 = askQuestion("There appears to be a fork in the road   ", new String[] {"Go right", "Go left"}, p);
+        // p.face.clearButtons();
+        // if (c1 == 0) 
+        // message("You go right around the fork", 1500, p);
+        // else
+        // message("You go left around the fork", 1500, p);
+        // message("walking down the road, you notice someone approaching you", 1000, p);
+        // message("???: Hello little peng-", 0, p);
+        // speakerMessage("Oh? " + "Your name is " + p.name + "?", "???", 1000, p);
+        // speakerMessage("And you're lost?", "???", 1000, p);
+        // speakerMessage("Well I am Socrates, one of the great philosophers of Greece", "???", 1000, p);
+        // speakerMessage("I may be able to asist you with some of my wisdom", "Socrates", 1000, p);
+        // int c2 = askQuestion("", new String[] {"Listen to Socrates' wisdom", "ignore"}, p);
+        // p.face.clearButtons();
+        // if (c2 == 0) {
+        //     speakerMessage("Courage is the first of human qualities because it is the quality that which guarantees the others", "Socrates", 1500, p);
+        //     int c3 = askQuestion("", new String[] {"I didn't know that", "Ok but who asked", "you're copying Aristotle"}, p);
+        //     p.face.clearButtons();
+        //     if (c3 == 0) {
+        //         message("You gained +10 intelligence", 1500, p);
+        //         speakerMessage("I also must warn you", "Socrates", 500, p);
+        //         speakerMessage("A dangerous creature lives nearby", "Socrates", 1000, p);
+        //         speakerMessage("I would be careful if I were you...", "Socrates", 1500, p);
+        //     }
+        //     else if (c3 == 1) {
+        //         speakerMessage("Be careful, " + p.name + ", sometimes words can hurt more than any weapon ever could", "Socrates", 1000, p);
+        //         message("Socrates will remember this...", 1000, p);
+        //         p.bulliedSocrates = 1;
+        //     }
+        //     else {
+        //     speakerMessage("I see, so that is the way it has to be", "Socrates", 1000, p);
+        //     message("Socrates will remember this...", 1000, p);
+        //         p.bulliedSocrates = 1;
+        //     }
+        //     message("Socrates walks away", 1000, p);
+        // }
+        // else
+        // message("you ignore Socrates and walk away", 1000, p);
+        //         p.bulliedSocrates = 1;
+        // boolean ch1complete = false;
+        // while(!ch1complete){
 
-        message("Continuing along the path, you see something in the distance", 1000, p);
-        message("It's a piece of candy", 1000, p);
-        message("It looks very good...", 1000, p);
-        boolean ansd = false;
-        while (!ansd) {
-            int c4 = askQuestion("Take the piece of candy?", new String[] {"yes", "no"}, p);
-            p.face.clearButtons();
-            if (c4 == 0) {
-                ansd = true;
-                message("You reach down to grab the cand-", 0, p);
-                p.face.cameraShake(50, 50);
-                message("ROAOHSDKAJHFHK", 1000, p);
-                message("A slime jumps out of the bushes in front of you!", 500, p);
+        // message("Continuing along the path, you see something in the distance", 1000, p);
+        // message("It's a piece of candy", 1000, p);
+        // message("It looks very good...", 1000, p);
+        // boolean ansd = false;
+        // while (!ansd) {
+        //     int c4 = askQuestion("Take the piece of candy?", new String[] {"yes", "no"}, p);
+        //     p.face.clearButtons();
+        //     if (c4 == 0) {
+        //         ansd = true;
+        //         message("You reach down to grab the cand-", 0, p);
+        //         p.face.cameraShake(50, 50);
+        //         message("ROAOHSDKAJHFHK", 1000, p);
+        //         message("A slime jumps out of the bushes in front of you!", 500, p);
 
 
-            }
-            else {
-                int r = JOptionPane.showConfirmDialog(new JFrame(), "You'll be very sad if you don't take the candy", "Are you sure?", 0, 2, null);
-                if (r == 0)
-                {
-                    ansd = true;
-                    p.face.setImage("sad");
-                    p.mood = "sad";
-                    p.face.timer.restart();
-                    message("You don't get any candy and are sad ;(", 1000, p);
-                    message("You continue walking down the path", 1000, p);
-                    message("You hear a rustling noi-", 0, p);
-                    p.face.cameraShake(50, 50);
-                    message("ROAOHSDKAJHFHK", 1000, p);
-                    message("A slime jumps out of the bushes in front of you!", 500, p);
-                }
-            }
-        }
-        int win = p.fight(new Opponent("Lesser Slime", 60, new String[] {"Tackle", "Bounce", "Slime"}, new int[] {100, 50, 100}, "slime"));
-        if (win == 0) {
-            p.face.clearMessage();
-            p.face.setImage("dead");
-            message("You died", 1000, p);
-            boolean o = false;
-            while (!o) {
-                int r1 = askQuestion("Continue?", new String[] {"yes", "no"}, p); 
-                if (r1 == 1) {
-                    int r = JOptionPane.showConfirmDialog(new JFrame(), "You will lose all of your progress", "Are you sure?", 0, 2, null);
-                    if (r == 0) {
-                        System.exit(0);
-                    }
-                }
-                else {
-                    o = true;
-                }
-            }
-        }
-        else {
-            ch1complete = true;
-        }
+        //     }
+        //     else {
+        //         int r = JOptionPane.showConfirmDialog(new JFrame(), "You'll be very sad if you don't take the candy", "Are you sure?", 0, 2, null);
+        //         if (r == 0)
+        //         {
+        //             ansd = true;
+        //             p.face.setImage("sad");
+        //             p.mood = "sad";
+        //             p.face.timer.restart();
+        //             message("You don't get any candy and are sad ;(", 1000, p);
+        //             message("You continue walking down the path", 1000, p);
+        //             message("You hear a rustling noi-", 0, p);
+        //             p.face.cameraShake(50, 50);
+        //             message("ROAOHSDKAJHFHK", 1000, p);
+        //             message("A slime jumps out of the bushes in front of you!", 500, p);
+        //         }
+        //     }
+        // }
+        // int win = p.fight(new Opponent("Lesser Slime", 60, new String[] {"Tackle", "Bounce", "Slime"}, new int[] {100, 50, 100}, "slime"));
+        // if (win == 0) {
+        //     p.face.clearMessage();
+        //     p.face.setImage("dead");
+        //     message("You died", 1000, p);
+        //     boolean o = false;
+        //     while (!o) {
+        //         int r1 = askQuestion("Continue?", new String[] {"yes", "no"}, p); 
+        //         if (r1 == 1) {
+        //             int r = JOptionPane.showConfirmDialog(new JFrame(), "You will lose all of your progress", "Are you sure?", 0, 2, null);
+        //             if (r == 0) {
+        //                 System.exit(0);
+        //             }
+        //         }
+        //         else {
+        //             o = true;
+        //         }
+        //     }
+        // }
+        // else {
+        //     ch1complete = true;
+        // }
 
-        }
-        message("You gain +1 candy!", 1000, p);
-        p.items[0].invAmt ++;
-        message("Continuing your hike down the path, you notice trees beginning to clear", 1000, p);
-        message("Gradually, the path grows wider and turns into a road", 1000, p);
-        message("The outline of a city comes into view...", 1200, p);
-        message("You make your way towards it", 1500, p);
-        message("...", 1500, p);
-        message("A man is walking in the opposite direction down the road", 1000, p);
-        message("He looks like he's in a hurry", 1000, p);
-        int c5 = askQuestion("", new String[] {"ignore him", "tell him something"}, p);
-        p.face.clearButtons();
-        if (c5 == 0) {
-            message("he walks by you and you continue onward", 1000, p);
-        }
-        else {
-            String resp = getResponse("", "What do you tell the man?");
-            p.face.clearButtons();
+        //}
+        // message("You gain +1 candy!", 1000, p);
+        // p.items[0].invAmt ++;
+        // message("Continuing your hike down the path, you notice trees beginning to clear", 1000, p);
+        // message("Gradually, the path grows wider and turns into a road", 1000, p);
+        // message("The outline of a city comes into view...", 1200, p);
+        // message("You make your way towards it", 1500, p);
+        // message("...", 1500, p);
+        // message("A man is walking in the opposite direction down the road", 1000, p);
+        // message("He looks like he's in a hurry", 1000, p);
+        // int c5 = askQuestion("", new String[] {"ignore him", "tell him something"}, p);
+        // p.face.clearButtons();
+        // if (c5 == 0) {
+        //     message("he walks by you and you continue onward", 1000, p);
+        // }
+        // else {
+        //     String resp = getResponse("", "What do you tell the man?");
+        //     p.face.clearButtons();
             
-        }
-        message("...", 1000, p);
-        message("You arrive at the enterance to the city", 1000, p);
-        message("The streets extending out in front of you are lined with stores, and you realize they could offer you valuable information", 1000, p);
-        message("You go up to one that appears to be selling maps and ask for one", 1000, p);
-        speakerMessage("That will be $0.25", "Store Clerk", 1000, p);
-        message("...", 1500, p);
+        // }
+        // message("...", 1000, p);
+        // message("You arrive at the enterance to the city", 1000, p);
+        // message("The streets extending out in front of you are lined with stores, and you realize they could offer you valuable information", 1000, p);
+        // message("You go up to one that appears to be selling maps and ask for one", 1000, p);
+        // speakerMessage("That will be $0.25", "Store Clerk", 1000, p);
+        // message("...", 1500, p);
         message("You realize you have no money...", 1000, p);
         int currentChoice = askQuestion("", new String[] {"Be a good simeritan and look for some on the streets", "Rob a bank"}, p);
         p.face.clearButtons();
@@ -193,26 +196,32 @@ public class Runner {
             message("you see a shop selling more maps for $0.01", 1000, p);
             message("You see another shop selling cookies", 1000, p);
             message("They are on sale: 100 for $0.50", 1000, p);
-            if (p.mood != "sad") {
-                p.face.setImage("sad");
-                message("You are sad", 1000, p);
-            }
             message("You keep walking...", 1200, p);
             message("Mr. Beast walks up to you", 1000, p);
             speakerMessage("I will give you ONE MILLION DOLLARS if you give me a penny!!!", "Mr. Beast", 1000, p);
             message("You are unable to complete his challenge due to having no money", 1000, p);
-            p.face.setImage("verysad");
-            p.mood = "verysad";
-            message("You are now extremely sad", 1000, p);
+            if (p.mood == "sad") {
+                p.face.setImage("verysad");
+                p.mood = "verysad";
+                message("You are now very sad", 1000, p);
+            }
+            else {
+                p.face.setImage("sad");
+                p.mood = "sad";
+                message("You are now sad", 1000, p);
+            }
+            
         }
         else {
             message("You go to a nearby bank", 1000, p);
             currentChoice = askQuestion("what is your plan?", new String[] {"Pretend to be an employee", "Stealth", "Speedblitz"}, p);
+            p.face.clearButtons();
             if (currentChoice == 0) {
                 message("You find a bank employee outfit on the streets and put it on", 1000, p);
                 message("Casually, you walk into the bank", 1000, p);
                 speakerMessage("Hey, you there in the dirty looking clothes! I don't think I recognize you", "Bank Employee", 1000, p);
                 int c7 = askQuestion("", new String[] {"I'm new here", "You may have dimentia"}, p);
+                p.face.clearButtons();
                 if (c7 == 0) {
                     speakerMessage("Oh, that explains it!", "Bank Employee", 1000, p);
                     speakerMessage("Well don't mind me, Carry on", "Bank Employee", 1000, p);
@@ -228,10 +237,174 @@ public class Runner {
                 message("Unfortunately, you don't know the safe combination", 1000, p);
                 askQuestion("", new String[] {"Guess"}, p);
                 p.face.clearButtons();
-                
+                getResponse("Safe Combination", "What is the combination?");
+                message("...", 1000, p);
+                message("You got it wrong", 1000, p);
+                speakerMessage("HEY WHAT DO YOU THINK YOU'RE DOING!", "Bank Employee", 1000, p);
+                askQuestion("", new String[] {"I was just testing the safe", "Nothing","Robbing this bank"}, p);
+                p.face.clearButtons();
+                speakerMessage("SAVE IT, I'M CALLING THE POLICE!!", "Bank Employee", 1000, p);
             }
+            else if (currentChoice == 1) {
+                message("You casually walk into the bank", 1200, p);
+                message("slowly, you tiptoe past the guards", 1200, p);
+                message("...", 1200, p);
+                message(".....", 1200, p);
+                message("...........................", 1200, p);
+                message("Something moves below your foor\t", 1000, p);
+                message("It's a bananna peel", 1000, p);
+                message("You slip on the bananna peel and fall on your back", 1000, p);
+                speakerMessage("SECURITY!!!", "Bank Employee", 1000, p);
+            }
+            else {
+                message("YOU RUSH STRAIGHT INTO THE BANK", 0, p);
+                message("A TABLE IS IN YOUR WAY", 0, p);
+                message("YOU JUMP OVER IT", 0, p);
+                speakerMessage("Hey what are you doing?", "Bank Employee", 100, p);
+                message("YOU JUMP OVER THE BANK EMPLOYEES", 0, p);
+                message("YOU SEE THE SAFE IN THE BACK", 0, p);
+                message("YOU RUN FORWARDS", 0, p);
+                message("ALMOST THEREEEEEEE", 0, p);
+                message(".......", 1500, p);
+                message("It has a combination lock...", 1500, p);
+                message("maybe you should have thought things through better...", 1000, p);
+            }
+            message("You have been arrested", 1000, p);
+            boolean escaped = false;
+            boolean checkedMail = false;
+            boolean eatenCake = false;
+            int strength = 0;
+            while (!escaped) {
+                message("You are in prison", 1000, p);
+                if (!checkedMail)
+                currentChoice = askQuestion("What do you do?", new String[] {"Work out", "Fight the prison guard", "Check your mail"}, p);
+                else if (!eatenCake)
+                currentChoice = askQuestion("What do you do?", new String[] {"Work out", "Fight the prison guard", "Eat the cake"}, p);
+                else
+                currentChoice = askQuestion("What do you do?", new String[] {"Work out", "Fight the prison guard", "Escape"}, p);
+                p.face.clearButtons();
+                if (currentChoice == 0) {
+                    p.face.setImage("lift");
+                    p.rest(10000);
+                    p.face.setImage(p.mood);
+                    if (strength < 1) {
+                        message("You feel a bit stronger", 1000, p);
+                        strength ++;
+                        p.strength ++;
+                    }
+                    else if (strength < 2) {
+                        message("You feel even stronger", 1000, p);
+                        strength ++;
+                        p.strength ++;
+                    }
+                    else {
+                        message("You feel very strong", 1000, p);
+                    }
+                }
+                else if (currentChoice == 1) {
+                    int won1 = p.fight(new Opponent("Prison Guard", 170, new String[] {"Tackle", "Punch", "Kick"}, new int[] {20, 15, 15}, "guard"));
+                     if (won1 == 0) {
+                        p.face.clearMessage();
+                        message("You were sent back to your cell", 1000, p);
+                        p.health = p.maxHealth;
+                    }
+                    else {
+                        escaped = true;
+                    }
+                }
+                else if (currentChoice == 2) {
+                    if (!checkedMail) {
+                        message("You check your mail", 1000, p);
+                        message("There's a cake inside", 1000, p);
+                        checkedMail = true;
+                    }
+                    else if (!eatenCake) {
+                        message("You eat the cake", 1000, p);
+                        message("+10 max hp", 1000, p);
+                        p.maxHealth += 10;
+                        p.health = p.maxHealth;
+                        message("You feel something hard in your mouth...", 1000, p);
+                        message("You obtained a file from inside the cake", 1000, p);
+                        eatenCake = true;
+                    }
+                    else {
+                        message("You file away the bars of your prison cell", 1000, p);
+                        escaped = true;
+                    }
+                }
+            }
+            message("You escaped prison!", 1200, p);
+            message("You attempt to navigate back to where you started, but can't find it", 1200, p);
         }
+        message("The road ahead splits in two", 1200, p);
+        currentChoice = askQuestion("Which direction do you go?", new String[] {"Right", "Left"}, p);
+        if (currentChoice == 0) {
+            message("You go right", 1000, p);
+        }
+        else {
+            message("You go left", 1000, p);
+        }
+        message("You are faced with another intersection", 1000, p);
+        int newChoice = askQuestion("Which direction do you go?", new String[] {"Right", "Left"}, p);
+        if (newChoice == 0) {
+            if (currentChoice == 0)
+            message("You go right again", 1000, p);
+            else
+            message("You go right", 1000, p);
+        }
+        else {
+            if (currentChoice == 1)
+            message("You go left again", 1000, p);
+            else
+            message("You go left", 1000, p);
+        }
+        message("You face yet another intersection", 1000, p);
+        currentChoice = askQuestion("Which direction do you go?", new String[] {"Right", "Left"}, p);
+        if (currentChoice == 0) {
+            if (newChoice == 0)
+            message("You go right again", 1000, p);
+            else
+            message("You go right", 1000, p);
+        }
+        else {
+            if (newChoice == 1)
+            message("You go left again", 1000, p);
+            else
+            message("You go left", 1000, p);
+        }
+        message("...", 1000, p);
+        message(".....", 1000, p);
+        message("It appears you are lost", 1000, p);
+        if (p.mood == "idle") {
+            p.face.setImage("sad");
+                p.mood = "sad";
+                message("You are now sad", 1000, p);
+        }
+        else if (p.mood == "sad") {
+            p.face.setImage("verysad");
+                p.mood = "verysad";
+                message("You are now very sad", 1000, p);
+        }
+        else if (p.mood == "verysad") {
+            p.face.setImage("extremelysad");
+                p.mood = "extremelysad";
+                message("You are now extremely sad", 1000, p);
+        }
+        if (p.bulliedSocrates < 1) {
+            message("You hear a familiar voice coming from behind you", 1000, p);
+            speakerMessage("Hello again, " + p.name + " my friend", "Socrates", 1000, p);
+            message("Socrates approaches you", 1000, p);
+            speakerMessage("Why do you look so down in the dumps?", "Socrates", 500, p);
+            speakerMessage("Oh? You're lost?", "Socrates", 1000, p);
+            speakerMessage("I know some wisdom that may brighten your spirits", "Socrates", 1000, p);
+            speakerMessage("To truly hide, one must hide in plain sight, for that is where your searchers will least expect you", "Socrates", 1000, p);
+            speakerMessage("", "Socrates", 1000, p);
+            
+        }
+        else {
 
+        }
+        
 
         
 

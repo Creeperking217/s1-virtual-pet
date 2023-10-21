@@ -12,13 +12,14 @@ import javax.swing.Timer;
 
 public class VirtualPet {
     
-    public int ignoredAristotle;
-    public int bulliedAristotle;
+    public int bulliedAristotle = 0;
+    public int bulliedSocrates = 0;
     public VirtualPetFace face;
     public int hunger = 0; 
     public int tiredness = 0;
     public int health = 50;
     public int maxHealth = 50;
+    public int strength = 0;
     
     int health1;
     public String name = "Penguin";
@@ -101,11 +102,14 @@ public class VirtualPet {
                         face.setImage("spinkick");
                         //face.timer.restart();
                         face.setMessage(name + " used " + "Spin-kick");
-                        rest(0);
+                        rest(100);
                         face.cameraShake(30, 10);
-                        face.setImage("slime");
+                        face.setImage(opponent.spriteName);
                         //face.timer.restart();
+                        if (strength < 2)
                         damageOpponent(50, opponent);
+                        else 
+                        damageOpponent(75, opponent);
                         rest(100);
                         if ( health1 == 0) {
                             face.clearMessage();
@@ -122,7 +126,10 @@ public class VirtualPet {
                     face.setMessage(name + " used " + "Tackle");
                         rest(100);
                         face.cameraShake(20, 5);
+                        if (strength < 2)
                         damageOpponent(20, opponent);
+                        else 
+                        damageOpponent(30, opponent);
                         rest(100);
                         if (health1 == 0) {
                             face.clearMessage();
@@ -136,7 +143,10 @@ public class VirtualPet {
                     face.setMessage(name + " used " + "Bully");
                         rest(100);
                         face.cameraShake(15, 2);
+                        if (strength < 2)
                         damageOpponent(10, opponent);
+                        else 
+                        damageOpponent(15, opponent);
                         rest(100);
                         if (health1 == 0) {
                             face.clearMessage();
