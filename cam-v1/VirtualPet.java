@@ -40,7 +40,7 @@ public class VirtualPet {
     // constructor
     public VirtualPet() {
         face = new VirtualPetFace();
-        face.setImage("idle");
+        face.setImage("white");
         face.setMessage("");
     }
 

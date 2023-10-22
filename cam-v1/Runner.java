@@ -164,7 +164,7 @@ public class Runner {
         }
 
         }
-        p.face.setImage("mood");
+        p.face.setImage(p.mood);
         message("You gain +1 candy!", 1000, p);
         p.items[0].invAmt ++;
         message("Continuing your hike down the path, you notice trees beginning to clear", 1000, p);
@@ -403,6 +403,7 @@ public class Runner {
                      if (won1 == 0) {
                         p.face.clearMessage();
                         message("You were sent back to your cell", 1000, p);
+                        p.face.setImage(p.mood);
                         p.health = p.maxHealth;
                     }
                     else {
