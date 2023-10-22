@@ -615,6 +615,8 @@ public class Runner {
                 }
         }
         else if (p.helpedAristotle >= 1) {
+            speakerMessage("Hello " + p.name, "Socrates", 1000, p);
+            speakerMessage("I thought we could be friends, but it seems now we are foes", "Socrates", 1000, p);
             p.philosopherFight(new Opponent("Socrates", 100, new String[] {""}, new int[] {1}, "socrates"));
             p.face.setImage("happy");
             message("You beat Socrates in battle", 1000, p);
@@ -648,6 +650,8 @@ public class Runner {
             }
         }
         else if (p.helpedSocrates >= 1) {
+            speakerMessage("Hello there, " + p.name, "Socrates", 1000, p);
+            speakerMessage("I have been waiting for you", "Socrates", 1000, p);
             p.philosopherFight(new Opponent("Airistotle", 100, new String[] {""}, new int[] {1}, "airistotle"));
             p.face.setImage("happy");
             message("You beat Aristotle in battle", 1000, p);
