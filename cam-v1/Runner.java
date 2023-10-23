@@ -256,9 +256,17 @@ public class Runner {
                         message("You continue your journey...", 1000, p);
                     }
                 }
+                p.face.setImage("sleep");
+                        p.rest(1500);
+                        p.face.setImage("idle");
+                        p.mood = "idle";
+                        message("What a strange dream...", 1000, p);
+                        message("You continue your journey...", 1000, p);
 
             }
-            
+            else {
+                message("The man looks at you confused and walks away", 1000, p);
+            }
             //stuff here
 
         }
@@ -408,6 +416,7 @@ public class Runner {
                     }
                     else {
                         escaped = true;
+                        p.face.setImage(p.mood);
                     }
                 }
                 else if (currentChoice == 2) {
