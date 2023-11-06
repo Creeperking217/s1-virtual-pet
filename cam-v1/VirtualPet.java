@@ -77,6 +77,8 @@ public class VirtualPet {
                 face.newButtonColumn(new String[] {"Spin-kick", "Tackle", "Bully"});
                 int chose = 1;
                 while (chose != 0) {
+                    face.buttonPressed = false;
+                face.newButtonColumn(new String[] {"Spin-kick", "Tackle", "Bully"});
                 while (!face.buttonPressed) {
                 rest(1);
                 }

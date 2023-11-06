@@ -12,6 +12,7 @@ public class Runner {
             p.face.setMessage("bruh");
             System.exit(0);
         }
+        
         p.face.clearButtons();
         p.face.clearMessage();
         p.face.setMessage("Nice");
